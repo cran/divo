@@ -1,5 +1,5 @@
 #DivO DP module
-#Version: 0.1
+#Version: 0.1.1
 #Autors: Maciej Pietrzak, Michal Seweryn, Grzegorz Rempala
 #Maintainer: Maciej Pietrzak <pietrzak.20@osu.edu>
 #License: GPL (>=2)
@@ -58,11 +58,11 @@ def CVG(items):
     items=list(items)
     return 1-(float(items.count(1))/sum(items))
 
-def single_profile(repetition, alphas, ENS): 
-    return map(( lambda a: RE(repetition,ENS,a)), alphas)
+def single_profile(repetition, alphas, ENS):
+    return [RE(repetition,ENS,a) for a in alphas]
 
-def single_profile_HT(repetition, alphas, ENS, n): 
-    return map(( lambda a: HT(repetition,ENS,a, n)), alphas)
+def single_profile_HT(repetition, alphas, ENS, n):
+    return [HT(repetition,ENS,a, n) for a in alphas]
 
 def CI_list_row(row, conf):
     row_mean= np.mean(row)
@@ -72,29 +72,33 @@ def CI_list_row(row, conf):
 
 def confidence_interval_for_list(row_repetitions,conf): 
     conf=(1-conf)/2
-    row_tmp= map(lambda i: CI_list_row(i, conf), row_repetitions)
+    row_tmp=[CI_list_row(i, conf) for i in row_repetitions]
+    
     return row_tmp
 
 def DP_single_population(dat_single, alphas, ENS):
-    col_repetitions= np.array(map(lambda i: single_profile(dat_single[i], alphas, ENS), range(len(dat_single))))
+    col_repetitions= np.array([single_profile(dat_single[i], alphas, ENS) for i in range(len(dat_single))])
+
     return confidence_interval_for_list(col_repetitions.T,conf)
 
-def DP_single_population_CVG(dat_single, alphas, cvg_n, ENS): 
-    col_repetitions= np.array(map(lambda i: single_profile(dat_single[i], alphas*cvg_n[i], ENS), range(len(dat_single))))
+def DP_single_population_CVG(dat_single, alphas, cvg_n, ENS):
+    col_repetitions= np.array([single_profile(dat_single[i], alphas*cvg_n[i], ENS) for i in range(len(dat_single))])
+
     return confidence_interval_for_list(col_repetitions.T,conf)
 
 def DP_single_population_HT(dat_single, alphas, ENS):
     ns= np.sum(dat_single, axis=1)
     dat_single=dat_single.T
     ps=dat_single/np.sum(dat_single, axis=0)
-    col_repetitions= np.array(map(lambda i: single_profile_HT(ps[:,i], alphas, ENS, ns[i]), range(len(ns))))
+    col_repetitions= np.array([single_profile_HT(ps[:,i], alphas, ENS, ns[i]) for i in range(len(ns))])
+
     return confidence_interval_for_list(col_repetitions.T,conf)
 
 def DP_single_population_CVG_HT(dat_single, alphas, cvg_n, ENS):   
     ns= np.sum(dat_single, axis=1)
     dat_single=dat_single.T
     ps=dat_single/np.sum(dat_single, axis=0)
-    col_repetitions= np.array(map(lambda i: single_profile_HT(ps[:,i], alphas*cvg_n[i], ENS, ns[i]), range(len(ns))))
+    col_repetitions= np.array([single_profile_HT(ps[:,i], alphas*cvg_n[i], ENS, ns[i]) for i in range(len(ns))])
     return confidence_interval_for_list(col_repetitions.T,conf)
 
 def DP(dat, alpha_prof, arrays_for_analysis, conf,  cvg, ENS=False):
@@ -102,24 +106,25 @@ def DP(dat, alpha_prof, arrays_for_analysis, conf,  cvg, ENS=False):
     else: alphas=np.load('tmp_alpha.pyc')
     listCvg=[]
     if cvg == 'TRUE':
-        for x in arrays_for_analysis: listCvg.append(map(lambda i: CVG(x[:,i]), range(len(x[1,:]))))
-        arrays_for_analysis= map(lambda a: a.astype(float), arrays_for_analysis) 
-        arrays_for_analysis_p=map(lambda a: a/np.sum(a, axis=0), arrays_for_analysis)
+        for x in arrays_for_analysis:
+            listCvg.append([CVG(x[:,i]) for i in range(len(x[1,:]))])
+        arrays_for_analysis=[a.astype(float) for a in arrays_for_analysis]
+        arrays_for_analysis_p=[a/np.sum(a, axis=0) for a in arrays_for_analysis]
         cos=[]
-        cvg_out=[]###
+        cvg_out=[]
         for a in range(len(np.array(arrays_for_analysis_p).T)):
             i=np.array(arrays_for_analysis_p).T[a]
             i= i[~np.all(i == 0, axis=1)]
             cos.append( DP_single_population_CVG(i.T, alphas, np.array(listCvg).T[a], ENS))
-            cvg_out.append(np.mean(np.array(listCvg).T[a]))###
-        np.save('DP_tmp_CVG', cvg_out)###
+            cvg_out.append(np.mean(np.array(listCvg).T[a]))
+        np.save('DP_tmp_CVG', cvg_out)
         for i in range(len(cos)):
             cos[i] = np.append(np.array([alphas]).T, cos[i], 1)
             np.save('DP_tmp_output_'+str("%03d" % (i+1,)), cos[i])
  
     else:
-        arrays_for_analysis= map(lambda a: a.astype(float), arrays_for_analysis) 
-        arrays_for_analysis_p=map(lambda a: a/np.sum(a, axis=0), arrays_for_analysis)
+        arrays_for_analysis=[a.astype(float) for a in arrays_for_analysis]
+        arrays_for_analysis_p=[a/np.sum(a, axis=0) for a in arrays_for_analysis]
         cos=[]
         cvg_out=[]
         for a in range(len(np.array(arrays_for_analysis_p).T)):
@@ -136,9 +141,10 @@ def DP_HT(dat, alpha_prof, arrays_for_analysis, conf,  cvg, ENS=False):
     else: alphas=np.load('tmp_alpha.pyc')
     listCvg=[]
     if cvg == 'TRUE':
-        for x in arrays_for_analysis: listCvg.append(map(lambda i: CVG(x[:,i]), range(len(x[1,:]))))
-        arrays_for_analysis= map(lambda a: a.astype(float), arrays_for_analysis)
-        array_of_ns = map(lambda a: np.sum(a, axis=0), arrays_for_analysis)
+        for x in arrays_for_analysis:
+            listCvg.append([CVG(x[:,i]) for i in range(len(x[1,:]))])
+        arrays_for_analysis=[a.astype(float) for a in arrays_for_analysis]
+        array_of_ns=[np.sum(a, axis=0) for a in arrays_for_analysis]
         cos=[]
         cvg_out=[]
         for a in range(len(np.array(arrays_for_analysis).T)):
@@ -151,8 +157,8 @@ def DP_HT(dat, alpha_prof, arrays_for_analysis, conf,  cvg, ENS=False):
             cos[i] = np.append(np.array([alphas]).T, cos[i], 1)
             np.save('DP_tmp_output_'+("%03d" % (i+1,)), cos[i])
     else:
-        arrays_for_analysis= map(lambda a: a.astype(float), arrays_for_analysis)
-        array_of_ns = map(lambda a: np.sum(a, axis=0), arrays_for_analysis)
+        arrays_for_analysis=[a.astype(float) for a in arrays_for_analysis]
+        array_of_ns=[np.sum(a, axis=0) for a in arrays_for_analysis]
         cos=[]
         cvg_out=[]
         for a in range(len(np.array(arrays_for_analysis).T)):

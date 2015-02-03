@@ -1,7 +1,7 @@
 Package: divo
-Version: 0.1
+Version: 0.1.1
 Type: Package
-Date: 2015-01-28
+Date: 2015-02-03
 Title: Tools for Analysis of Diversity and Similarity in Biological
         Systems
 Author: Maciej Pietrzak, Michal Seweryn, Grzegorz Rempala
@@ -10,7 +10,7 @@ Depends: R (>= 3.1.0), RcppCNPy, cluster
 SystemRequirements: Python (>=2.76), NumPy
 Description: A set of tools for empirical analysis of diversity (a number and frequency of different types in population) and similarity (a number and frequency of shared types in two populations) in biological or ecological systems. 
 License: GPL (>= 2)
-Packaged: 2015-01-29 03:22:30 UTC; Maciej
+Packaged: 2015-02-03 14:29:27 UTC; Maciej
 NeedsCompilation: no
 Repository: CRAN
-Date/Publication: 2015-01-29 07:24:08
+Date/Publication: 2015-02-03 18:00:59

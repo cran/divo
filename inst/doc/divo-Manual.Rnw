@@ -41,7 +41,7 @@
 \begin{description}
 \raggedright{}
 
-\item[Version]\AsIs{0.1}
+\item[Version]\AsIs{0.1.1}
 \item[Type]\AsIs{Package}
 \item[Authors]\AsIs{Maciej Pietrzak, Michal Seweryn, Grzegorz Rempala}
 \item[Maintainer]\AsIs{Maciej Pietrzak }\email{pietrzak.20@osu.edu}\AsIs{}

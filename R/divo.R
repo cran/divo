@@ -1,5 +1,5 @@
 #divo R module 
-#Version: 0.1
+#Version: 0.1.1
 #Autor: Maciej Pietrzak, Michal Seweryn, Grzegorz Rempala
 #Maintainer: Maciej Pietrzak <pietrzak.20@osu.edu>
 #License: GPL (>=2)
@@ -9,6 +9,7 @@ cvg<-function(x){y=x; n = sum(y);f1 = sum(y == 1); if (f1 == n){f1 = n - 1}
 
 i.inp <- function(x, alpha=1, CI=0.95, resample=100, graph=FALSE, csv_output=FALSE, PlugIn=FALSE, size=1, CVG=FALSE, saveBootstrap=FALSE)
   {xx=x; resample= round(resample, 0); xx[is.na(xx)] <- 0;
+  	wdCheck<-try(.WriteTest(), silent=T);if(wdCheck=="Passed"){
 	if(class(xx)=="numeric"){stop("Number of columns must be greater than 1")}
 	if(resample < 1){stop("resample must be greater than 1")}
 	if(size < 0.1){stop("size must be greater than or equal to 0.1")}
@@ -18,10 +19,11 @@ i.inp <- function(x, alpha=1, CI=0.95, resample=100, graph=FALSE, csv_output=FAL
   t<-system(cmd, intern=TRUE); file.remove("tmp_in.pyc");    
  	return (.e.clust(xx, csv_output, graph, funct="INP", CVG, PlugIn))}
 	else {stop("Confidence interval must be between 0 and 1; default CI=0.95")}}
-	else{stop("alpha must be greater than 0")}}
+	else{stop("alpha must be greater than 0")}}}
 
 li <- function(x, CI=0.95, resample=100, graph=FALSE, csv_output=FALSE, PlugIn=FALSE, size=1, saveBootstrap=FALSE)
   {xx=x; resample= round(resample, 0); xx[is.na(xx)] <- 0;
+  	wdCheck<-try(.WriteTest(), silent=T);if(wdCheck=="Passed"){
 	if(class(xx)=="numeric"){stop("Number of columns must be greater than 1")}
 	if(resample < 1){stop("resample must be greater than 1")}
 	if(size < 0.1){stop("size must be greater than or equal to 0.1")}
@@ -30,10 +32,11 @@ li <- function(x, CI=0.95, resample=100, graph=FALSE, csv_output=FALSE, PlugIn=F
   cmd=paste(c("python"), path, c("LI"), 1,  resample, CI, f='x',PlugIn, format(size, scientific=FALSE), 'beta', "CVG", saveBootstrap, sep=" "); 
   t<-system(cmd, intern=TRUE); file.remove("tmp_in.pyc");  
   return (.e.clust( xx, csv_output, graph, funct="LI", F, PlugIn))}                                                                                     
-	else {stop("Confidence interval must be between 0 and 1; default CI=0.95")}}
+	else {stop("Confidence interval must be between 0 and 1; default CI=0.95")}}}
 
 ji <- function(x, CI=0.95, resample=100, graph=FALSE, csv_output=FALSE, PlugIn=FALSE, size=1, saveBootstrap=FALSE) 
   {xx=x; resample= round(resample, 0); xx[is.na(xx)] <- 0;
+  	wdCheck<-try(.WriteTest(), silent=T);if(wdCheck=="Passed"){
 	if(class(xx)=="numeric"){stop("Number of columns must be greater than 1")}
 	if(resample < 1){stop("resample must be greater than 1")}
 	if(size < 0.1){stop("size must be greater than or equal to 0.1")}
@@ -42,10 +45,11 @@ ji <- function(x, CI=0.95, resample=100, graph=FALSE, csv_output=FALSE, PlugIn=F
   cmd=paste(c("python"), path, c("JI"), 1,  resample, CI, f='x',PlugIn, format(size, scientific=FALSE), 'beta', "CVG", saveBootstrap, sep=" "); 
   t<-system(cmd, intern=TRUE); file.remove("tmp_in.pyc");
   return (.e.clust( xx, csv_output, graph, funct="JI", F, PlugIn))}
-	else {stop("Confidence interval must be between 0 and 1; default CI=0.95")}}
+	else {stop("Confidence interval must be between 0 and 1; default CI=0.95")}}}
 
 rd <- function(x, alpha=0.5, CI=0.95, resample=100, graph=FALSE, csv_output=FALSE, PlugIn=FALSE, size=1, CVG=FALSE, saveBootstrap=FALSE)
   {xx=x; resample= round(resample, 0); xx[is.na(xx)] <- 0;
+  	wdCheck<-try(.WriteTest(), silent=T);if(wdCheck=="Passed"){
 	if(resample < 1){stop("resample must be greater than 1")}
 	if(size < 0.1){stop("size must be greater than or equal to 0.1")}
 	if(class(xx)=="numeric"){stop("Number of columns must be greater than 1")}
@@ -60,10 +64,11 @@ rd <- function(x, alpha=0.5, CI=0.95, resample=100, graph=FALSE, csv_output=FALS
   return (.e.clust( xx, csv_output, graph, funct="RD", CVG, PlugIn))}
 	else{stop("Confidence interval must be between 0 and 1; default CI=0.95")}}
 	else{stop("alpha must be greater than 0")}}
-	else{stop("alpha must be != 1")}}
+	else{stop("alpha must be != 1")}}}
 
 srd <- function(x, alpha=0.5, CI=0.95, resample=100, graph=FALSE, csv_output=FALSE, PlugIn=FALSE, size=1, CVG=FALSE, saveBootstrap=FALSE)
   {if(alpha < 1){xx=x; resample= round(resample, 0); xx[is.na(xx)] <- 0;
+  	wdCheck<-try(.WriteTest(), silent=T);if(wdCheck=="Passed"){
 	if(class(xx)=="numeric"){stop("Number of columns must be greater than 1")}
 	if(resample < 1){stop("resample must be greater than 1")}
 	if(size < 0.1){stop("size must be greater than or equal to 0.1")}
@@ -77,11 +82,12 @@ srd <- function(x, alpha=0.5, CI=0.95, resample=100, graph=FALSE, csv_output=FAL
   file.remove("tmp_in.pyc");  
   return (.e.clust( xx, csv_output, graph, funct="RD", CVG, PlugIn))}
 	else {stop("Confidence interval must be between 0 and 1; default CI=0.95")}}
-	else{stop("alpha must be greater than 0")}}}
-	else {stop("alpha must be < 1")}}
+	else{stop("alpha must be greater than 0")}}
+	else {stop("alpha must be < 1")}}}}
 
 mh <- function(x, CI=0.95, resample=100, graph=FALSE, csv_output=FALSE, PlugIn=FALSE, size=1, saveBootstrap=FALSE)
   {xx=x; resample= round(resample, 0); xx[is.na(xx)] <- 0;
+  	wdCheck<-try(.WriteTest(), silent=T);if(wdCheck=="Passed"){
 	if(class(xx)=="numeric"){stop("Number of columns must be greater than 1")}
 	if(resample < 1){stop("resample must be greater than 1")}
 	if(size < 0.1){stop("size must be greater than or equal to 0.1")}
@@ -91,10 +97,11 @@ mh <- function(x, CI=0.95, resample=100, graph=FALSE, csv_output=FALSE, PlugIn=F
   cmd=paste(c("python"), path, c("MH"), 1,  resample, CI, f='RE',PlugIn, format(size, scientific=FALSE), 'beta', "CVG", saveBootstrap, sep=" "); 
   t<-system(cmd, intern=TRUE); file.remove("tmp_in.pyc"); 
   return (.e.clust( xx, csv_output, graph, funct="MH", F, PlugIn))}       
-	else {stop("Confidence interval must be between 0 and 1; default CI=0.95")}}
+	else {stop("Confidence interval must be between 0 and 1; default CI=0.95")}}}
 
 pg <- function(x, alpha=1, beta=alpha, CI=0.95, resample=100, graph=FALSE, csv_output=FALSE, PlugIn=FALSE, size=1, CVG=FALSE, saveBootstrap=FALSE)
   {xx=x; resample= round(resample, 0); xx[is.na(xx)] <- 0;
+  	wdCheck<-try(.WriteTest(), silent=T);if(wdCheck=="Passed"){
 	if(class(xx)=="numeric"){stop("Number of columns must be greater than 1")}
 	if(resample < 1){stop("resample must be greater than 1")}
 	if(size < 0.1){stop("size must be greater than or equal to 0.1")}
@@ -104,10 +111,11 @@ pg <- function(x, alpha=1, beta=alpha, CI=0.95, resample=100, graph=FALSE, csv_o
   t<-system(cmd, intern=TRUE); file.remove("tmp_in.pyc"); 
   return (.e.clust( xx, csv_output, graph, funct="PG", CVG, PlugIn))}
 	else {stop("Confidence interval must be between 0 and 1; default CI=0.95")}}
-	else{stop("alpha and beta must be greater than 0")}}
+	else{stop("alpha and beta must be greater than 0")}}}
 
 pg.ht <- function(x, alpha=1,  beta=alpha, CI=0.95, resample=100, graph=FALSE, csv_output=FALSE, PlugIn=FALSE, size=1, CVG=FALSE, saveBootstrap=FALSE)
   {xx=x; resample= round(resample, 0); xx[is.na(xx)] <- 0;
+  	wdCheck<-try(.WriteTest(), silent=T);if(wdCheck=="Passed"){
 	if(class(xx)=="numeric"){stop("Number of columns must be greater than 1")}
 	if(resample < 1){stop("resample must be greater than 1")}
 	if(size < 0.1){stop("size must be greater than or equal to 0.1")}
@@ -117,10 +125,11 @@ pg.ht <- function(x, alpha=1,  beta=alpha, CI=0.95, resample=100, graph=FALSE, c
   t<-system(cmd, intern=TRUE); file.remove("tmp_in.pyc"); 
   return (.e.clust( xx, csv_output, graph, funct="PG.ht", CVG, PlugIn))}
 	else {stop("Confidence interval must be between 0 and 1; default CI=0.95")}}
-	else{stop("alpha and beta must be greater than 0")}}
+	else{stop("alpha and beta must be greater than 0")}}}
 
 i.in <- function(x, alpha=1, CI=0.95, resample=100, PlugIn=FALSE, size=1, CVG=FALSE, saveBootstrap=FALSE)
   {xx=x; resample= round(resample, 0); xx[is.na(xx)] <- 0;
+  	wdCheck<-try(.WriteTest(), silent=T);if(wdCheck=="Passed"){
 	if(class(xx)=="numeric"){stop("Number of columns must be greater than 1")}
 	if(resample < 1){stop("resample must be greater than 1")}
 	if(size < 0.1){stop("size must be greater than or equal to 0.1")}
@@ -133,7 +142,7 @@ i.in <- function(x, alpha=1, CI=0.95, resample=100, PlugIn=FALSE, size=1, CVG=FA
   rownames(get.data)<-c("Mean", "Lower.Quantile", "Upper.Quantile"); file.remove("tmp_IN.npy");
   return (get.data)}
 	else {stop("Confidence interval must be between 0 and 1; default CI=0.95")}}
-	else{stop("alpha must be between 0.1 and 1")}}
+	else{stop("alpha must be between 0.1 and 1")}}}
 
 .e.clust<-function( xy, csv_output, graph, funct, CVG, PlugIn)
   {pr_mean<-t(npyLoad('tmp_out_mean.npy')); pr_min <-t(npyLoad('tmp_out_min.npy')); pr_max <-t(npyLoad('tmp_out_max.npy'));
@@ -177,6 +186,7 @@ i.in <- function(x, alpha=1, CI=0.95, resample=100, PlugIn=FALSE, size=1, CVG=FA
 
 dp <- function(x, alpha=seq(0.1, 2, 0.1), CI=0.95, resample=100, single_graph=FALSE, pooled_graph=FALSE, csv_output=FALSE, PlugIn=FALSE, size=1, CVG=FALSE, saveBootstrap=FALSE) 
   {xx=x; resample= round(resample, 0); xx[is.na(xx)] <- 0;
+  wdCheck<-try(.WriteTest(), silent=T);if(wdCheck=="Passed"){
   if(resample < 1){stop("resample must be greater than 1")}
   if(size < 0.1){stop("size must be greater than or equal to 0.1")}
   if (0<CI & CI<1){f="RE";if(class(xx)!="matrix"){ xx<-as.matrix(xx)}
@@ -199,10 +209,11 @@ dp <- function(x, alpha=seq(0.1, 2, 0.1), CI=0.95, resample=100, single_graph=FA
   return(output)}     
   else {stop("Confidence interval must be between 0 and 1; default CI=0.95")}
   list_to_remove<-(list.files(pattern= 'DP_tmp_output_'))
-  file.remove(list_to_remove)}
+  file.remove(list_to_remove)}}
 
 ens <- function(x, alpha=seq(0.1, 2, 0.1), CI=0.95, resample=100, single_graph=FALSE, pooled_graph=FALSE, csv_output=FALSE, PlugIn=FALSE, size=1, CVG=FALSE, saveBootstrap=FALSE) 
   {xx=x; resample= round(resample, 0); xx[is.na(xx)] <- 0;
+  wdCheck<-try(.WriteTest(), silent=T);if(wdCheck=="Passed"){
   if(resample < 1){stop("resample must be greater than 1")}  	
   if(size < 0.1){stop("size must be greater than or equal to 0.1")}
   if (0<CI & CI<1){
@@ -230,13 +241,14 @@ ens <- function(x, alpha=seq(0.1, 2, 0.1), CI=0.95, resample=100, single_graph=F
   return(output)}     
   else {stop("Confidence interval must be between 0 and 1; default CI=0.95")}
   list_to_remove<-(list.files(pattern= 'DP_tmp_output_'))
-  file.remove(list_to_remove)}
+  file.remove(list_to_remove)}}
 
 dp.ht <- function(x, alpha=seq(0.1, 2, 0.1), CI=0.95, resample=100, single_graph=FALSE, pooled_graph=FALSE, csv_output=FALSE, PlugIn=FALSE, size=1, CVG=FALSE, saveBootstrap=FALSE) 
   {xx=x; resample= round(resample, 0); xx[is.na(xx)] <- 0;
-	if(resample < 1){stop("resample must be greater than 1")}
-	if(size < 0.1){stop("size must be greater than or equal to 0.1")}
-	if (0<CI & CI<1){
+  wdCheck<-try(.WriteTest(), silent=T);if(wdCheck=="Passed"){
+  if(resample < 1){stop("resample must be greater than 1")}
+  if(size < 0.1){stop("size must be greater than or equal to 0.1")}
+  if (0<CI & CI<1){
   if(class(xx)!="matrix"){ xx<-as.matrix(xx)}
   Alpha.Profile=alpha
   if(min(Alpha.Profile)<=0){stop("alpha must be larger than 0")}
@@ -260,10 +272,11 @@ dp.ht <- function(x, alpha=seq(0.1, 2, 0.1), CI=0.95, resample=100, single_graph
   return(output)}     
   else {stop("Confidence interval must be between 0 and 1; default CI=0.95")}
   list_to_remove<-(list.files(pattern= 'DP_tmp_output_'))
-  file.remove(list_to_remove)}
+  file.remove(list_to_remove)}}
 
 ens.ht <- function(x, alpha=seq(0.1, 2, 0.1), CI=0.95, resample=100, single_graph=FALSE, pooled_graph=FALSE, csv_output=FALSE, PlugIn=FALSE, size=1, CVG=FALSE, saveBootstrap=FALSE)
   {xx=x; resample= round(resample, 0); xx[is.na(xx)] <- 0;
+  wdCheck<-try(.WriteTest(), silent=T);if(wdCheck=="Passed"){
   if(resample < 1){stop("resample must be greater than 1")}
   if(size < 0.1){stop("size must be greater than or equal to 0.1")}
   if (0<CI & CI<1){
@@ -289,11 +302,15 @@ ens.ht <- function(x, alpha=seq(0.1, 2, 0.1), CI=0.95, resample=100, single_grap
   return(output)}     
   else {stop("Confidence interval must be between 0 and 1; default CI=0.95")}
   list_to_remove<-(list.files(pattern= 'DP_tmp_output_'))
-  file.remove(list_to_remove)}
+  file.remove(list_to_remove)}}
 
 .DP.single.profile<-function(lab, single_graph, title='Title', Alpha.Profile, CVG, PlugIn)
   {max.y<-0; min.y<-100; pat<-c('DP_tmp_output_');  allfiles<- list.files(pattern= pat); 
-  len<-seq(1,length(allfiles), by=1); 
+  
+  ###
+  #len<-seq(1,length(allfiles), by=1); 
+  len<-seq_along(allfiles)
+  ###
   if(length(lab)<=1){len=1}
   xx_pooled<-list() 
   if(CVG==TRUE){cvg.tmp<-npyLoad("DP_tmp_CVG.npy");cvg.tmp=cbind(cvg.tmp);rownames(cvg.tmp)<-lab; colnames(cvg.tmp)<-"CVG"; if(PlugIn==TRUE){colnames(cvg.tmp)<-"PlugIn.CVG"}}
@@ -321,7 +338,11 @@ ens.ht <- function(x, alpha=seq(0.1, 2, 0.1), CI=0.95, resample=100, single_grap
   return(l)}
 
 .DP.pooled.profile<-function( lab, min.y, max.y, title="Title", pooled_graph, Alpha.Profile)
-  {pat<-c('DP_tmp_output_'); allfiles<- list.files(pattern= pat); len<-seq(1,length(allfiles), by=1); 
+  {pat<-c('DP_tmp_output_'); allfiles<- list.files(pattern= pat); 
+  	###
+  	###len<-seq(1,length(allfiles), by=1); 
+  	len<-seq_along(allfiles)
+  	###
   if(length(lab)==1){len=1}
   xx_pooled<-list(); colors<-rainbow(length(lab));
   par(mfrow=c(1,1)); y.label='Diversity Index'
@@ -340,4 +361,15 @@ ens.ht <- function(x, alpha=seq(0.1, 2, 0.1), CI=0.95, resample=100, single_grap
   if(pooled_graph==TRUE){ dev.copy(pdf, paste("DivO_DP_AllPopulations", '.pdf', sep="")); dev.off()}
   else{dev.copy(pdf, paste(pooled_graph, '.pdf', sep="")); dev.off()}
   return()}
+  
+.WriteTest <- function(){testMatrix<-NULL->np;
+  path<-paste(system.file(package="divo"), "DivO_EnvCheck.py", sep="/");
+  try(npySave("WriteTest", matrix(1,2,2)), silent=T)
+  try(testMatrix<-npyLoad("WriteTest"), silent=T)
+  cmd=paste(c("python"), path, sep=" "); 
+  try(t<-system(cmd, intern=TRUE), silent=T); 
+  try(np<-npyLoad("divoEnvCheck_out.npy"), silent=T);
+  options(warn=-1);try(file.remove("WriteTest", "divoEnvCheck_out.npy"), silent=T)
+  if(sum(testMatrix)==4 & sum(np)==12){return("Passed")}
+  else {message("\ndivo environment check: Failed. \n\nSolutions:\n1. check write permissions for working directory,\n2. check if dependences are installed and configured correctly.\n");return("Failed")}}
 

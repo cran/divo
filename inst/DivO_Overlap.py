@@ -1,5 +1,5 @@
 #DivO Overlap module
-#Version: 0.1
+#Version: 0.1.1
 #Autors: Maciej Pietrzak, Michal Seweryn, Grzegorz Rempala
 #Maintainer: Maciej Pietrzak <pietrzak.20@osu.edu>
 #License: GPL (>=2)
@@ -99,7 +99,7 @@ def PG(alpha, beta, x):
     x= x.astype(float)
     x= x[~np.all(x == 0, axis=1)] 
     x= x.T
-    x= np.array(map(lambda a: a/np.sum(a, axis=0), x))
+    x= np.array([a/np.sum(a, axis=0) for a in x])
     x= x.T
     return  (sum((x[:,0]**alpha)*(x[:,1]**beta))+sum((x[:,1]**alpha)*(x[:,0]**beta)))/(sum((x[:,0]**(beta+alpha)))+ sum((x[:,1]**(alpha+beta))))
 
@@ -132,17 +132,14 @@ def JI(x):
 
 def RDS(x, alpha):
     x= x.astype(float)
-    freqs=np.asarray(map(lambda a: a/np.sum(a, axis=0), x))
+    freqs=np.asarray([a/np.sum(a, axis=0) for a in x])
     if alpha !=1: rd_out= 0.5*(((1/(alpha-1))*math.log(sum((freqs[0,:]**alpha)*(freqs[1,:]**(1-alpha))))) + ((1/(alpha-1))*math.log(sum((freqs[1,:]**alpha)*(freqs[0,:]**(1-alpha))))))
     else: rd_out=0 
     return rd_out
 
 def RD(x, alpha):
     x= x.astype(float)
-    #x=x.T
-    #x=x[np.all(x!=0, axis=1)] #remove zeros for alpha >=1
-    #x=x.T
-    freqs=np.asarray(map(lambda a: a/np.sum(a, axis=0), x))
+    freqs=np.asarray([a/np.sum(a, axis=0) for a in x])
     if alpha !=1: rd_out=((1/(alpha-1))*math.log(sum((freqs[0,:]**alpha)*(freqs[1,:]**(1-alpha)))))
     else: rd_out= sum(freqs[0,:] * np.log(freqs[0,:]/freqs[1,:]))
     return rd_out
@@ -167,7 +164,7 @@ def IN(dat, f, alpha, beta, arrays_for_analysis, conf, cvg):
         list_of_columns=[]
         numbers=arrays_for_analysis[r]
         if cvg=='TRUE':
-            cvg_nums=map(lambda i: CVG(numbers[:,i]), range(len(numbers[1,:])))
+            cvg_nums=[CVG(numbers[:,i]) for i in range(len(numbers[1,:]))]
             all_CVG.append(cvg_nums)
             for i in range(len(numbers[1,:])):               
                 for j in range(len(numbers[1,:])):

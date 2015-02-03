@@ -1,12 +1,13 @@
-6b7d551789eedc3f9ebafc00ed129b79 *DESCRIPTION
+c2d57ece9ad05e111af5528d5e9cc9c0 *DESCRIPTION
 fe98958b84c4172bed20a0a99644721d *NAMESPACE
-bdd7c0905b8e934a91dd37c086e17204 *R/divo.R
+790a79bdbb0a50c76b1673073ad4b3ad *R/divo.R
 03859197f26b7c156b46402143ccf7f0 *build/vignette.rds
 3be46a3ef972393785b8b2ccb3ad63fd *data/TCR.Data.rda
-2c47ee519dce577e8325ef96a913dd4d *inst/DivO_DP.py
-73f3c630cb21df3b3227f05231046d7f *inst/DivO_Overlap.py
-710cff91993b6d02379dde94932fed97 *inst/doc/divo-Manual.Rnw
-0f59231729c6bda8e8aea8065b6fb4cd *inst/doc/divo-Manual.pdf
+64ab9867defb736b9e84ef38021b0672 *inst/DivO_DP.py
+40484f6e16c0ec7d9c9e2b04500dc220 *inst/DivO_EnvCheck.py
+feaa13c804cca8901876b337ccf02dcf *inst/DivO_Overlap.py
+1546db55ab518a6413146d970d5418bd *inst/doc/divo-Manual.Rnw
+6347e7f4dd4affd381b8d6896adc99cd *inst/doc/divo-Manual.pdf
 59c1d98f6132ebc408eba026ab042e8e *inst/doc/divo-Vignette.R
 f6108a76d7fe7f9afdeaa6989e84a0ac *inst/doc/divo-Vignette.Rnw
 bbab2764861b1a156360f70d01539922 *inst/doc/divo-Vignette.pdf
@@ -28,5 +29,5 @@ d85cb9cc52b6b213e0611091da009032 *man/pg.ht.Rd
 9bf89458d083eada4282fd34ac219fe6 *man/rd.Rd
 70343f58a13c949da46d0e9f92454a41 *man/srd.Rd
 9a9ba766aff2c366f21d93261fbe8fbd *man/x.Rd
-710cff91993b6d02379dde94932fed97 *vignettes/divo-Manual.Rnw
+1546db55ab518a6413146d970d5418bd *vignettes/divo-Manual.Rnw
 f6108a76d7fe7f9afdeaa6989e84a0ac *vignettes/divo-Vignette.Rnw
