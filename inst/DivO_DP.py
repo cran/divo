@@ -1,5 +1,5 @@
 #DivO DP module
-#Version: 0.1.1
+#Version: 0.1.2
 #Autors: Maciej Pietrzak, Michal Seweryn, Grzegorz Rempala
 #Maintainer: Maciej Pietrzak <pietrzak.20@osu.edu>
 #License: GPL (>=2)

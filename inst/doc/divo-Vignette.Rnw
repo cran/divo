@@ -10,7 +10,7 @@
 \author{Maciej Pietrzak, Michal Seweryn,\\ Grzegorz Rempala
 }
 \date{January 10 2015\\
-Revised January 25 2015}
+Revised January 1 2016}
 \begin{document}
 \SweaveOpts{concordance=TRUE}
 \maketitle

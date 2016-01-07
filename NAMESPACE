@@ -2,5 +2,8 @@ exportPattern("^[^\\.z]")
 
 import(RcppCNPy) 
 import(cluster)
-
+importFrom("grDevices", "dev.copy", "dev.off", "pdf", "rainbow")
+importFrom("graphics", "legend", "lines", "par", "plot")
+importFrom("stats", "as.dendrogram")
+importFrom("utils", "write.csv")
 
