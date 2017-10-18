@@ -1,6 +1,7 @@
 exportPattern("^[^\\.z]")
 
-import(RcppCNPy) 
+useDynLib(divo,.registration=TRUE)
+export(cvg, i.inp, li, ji, rd, srd, mh, pg, pg.ht, i.in, dp, ens, dp.ht, ens.ht)
 import(cluster)
 importFrom("grDevices", "dev.copy", "dev.off", "pdf", "rainbow")
 importFrom("graphics", "legend", "lines", "par", "plot")

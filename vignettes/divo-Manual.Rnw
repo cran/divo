@@ -18,7 +18,7 @@
 \textbf{\Huge\ divo}
 \par\large\bold{Diversity and Overlap Analysis Package}
 \par\large\bold{User's Guide}
-\par\bigskip\large Maciej Pietrzak, Michal Seweryn
+\par\bigskip\large Christoph Sadee, Maciej Pietrzak, Michal Seweryn
 \par\large and Grzegorz Rempala
 \par{\large\bigskip \today}
 
@@ -41,13 +41,13 @@
 \begin{description}
 \raggedright{}
 
-\item[Version]\AsIs{0.1.2}
+\item[Version]\AsIs{0.2}
 \item[Type]\AsIs{Package}
-\item[Authors]\AsIs{Maciej Pietrzak, Michal Seweryn, Grzegorz Rempala}
+\item[Authors]\AsIs{Christoph Sadee, Maciej Pietrzak, Michal Seweryn, Grzegorz Rempala}
 \item[Maintainer]\AsIs{Maciej Pietrzak }\email{pietrzak.20@osu.edu}\AsIs{}
-\item[Depends]\AsIs{R (>= 3.1.0), RcppCNPy, cluster, Python (>=2.76), Numpy}
+\item[Depends]\AsIs{R (>= 3.3.0), cluster}
 \item[Description]\AsIs{Package implements empirical analysis of diversity and similarity (overlap) in biological or ecological systems.}
-\item[License]\AsIs{GPL (>=2)}
+\item[License]\AsIs{GPL (>=3)}
 \end{description}
 
 
@@ -87,24 +87,8 @@ Package implements various algorithms for empirical analysis of diversity and si
 \HeaderA{divo System Requirements}{}{divo System Requirements}
 %
 \begin{Description}\relax
-divo package requires R >=3.1.0; RcppCNPy and cluster packages;  Python >= 2.76 with NumPy.
+divo package requires R >=3.1.0 and cluster package.
 
-\strong{Installation of Python and NumPy.} 
-
-Python is already installed in computers with an OSX or a Linux OS.
-To install Python in Windows visit \url{https://www.python.org/downloads/}; download the latest version of python and follow the installation instruction. For more information visit \url{https://www.python.org/doc/}
-
-To install NumPy go to \url{http://sourceforge.net/projects/numpy/files/NumPy}, download the latest version of software appropriate for your operating system and follow installation manual. For more information visit \url{http://www.numpy.org}.
-
-In Linux both Python and Numpy may be installed using system package manger e.g. "synaptic" in Debian distribution.
-\newpage
-\strong{Setting path on Windows. } 
-
-1. Open System Properties and click Advanced system settings > Advanced tab;\\{}
-2. Click on Environment Variables, under System Variables, find PATH, and click on it;\\{}
-3. In the Edit window, modify PATH by adding the location of Python folder. \\{}
-
-If you do not have the item PATH, you may select to add a new variable and add PATH as the name and the location of the Python folder.
 \end{Description}
 
 \inputencoding{utf8}

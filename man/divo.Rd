@@ -26,7 +26,7 @@
 Rempala G.A., Seweryn M. (2013) Methods for diversity and overlap analysis in T-cell receptor populations. J Math Biol 67:1339-68
 }
 \author{
-Maciej Pietrzak, Michal Seweryn, Grzegorz Rempala\cr
+Christoph Sadee, Maciej Pietrzak, Michal Seweryn, Grzegorz Rempala\cr
 Maintainer: Maciej Pietrzak \email{pietrzak.20@osu.edu}
 }
 

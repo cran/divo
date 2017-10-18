@@ -7,33 +7,42 @@
 \headheight=0in
 \headsep=0in
 \title{divo\\ diversity and overlap analysis package}
-\author{Maciej Pietrzak, Michal Seweryn,\\ Grzegorz Rempala
+\author{Christoph Sadee, Maciej Pietrzak, Michal Seweryn,\\ Grzegorz Rempala
 }
-\date{January 10 2015\\
-Revised January 1 2016}
+\date{September 1 2017\\
+Revised September 14 2017}
 \begin{document}
 \SweaveOpts{concordance=TRUE}
 \maketitle
 
-Divo package implements empirical analysis of diversity and similarity (overlap) in biological or ecological systems. The implemented indices of diversity and overlap are based on the information-theoretic as well as geometric considerations. They have the capacity to naturally up-weight or down-weight the rare and abundant population species counts, by applying the Good-Turing sample-coverage correction. Additionally, the functional versions of the indices are implemented in the form of the so called diversity profiles. The package also implements the indices inversion known as the effective number of species (ENS).
+divo package implements empirical analysis of diversity and similarity (overlap) in biological or ecological systems. The implemented indices of diversity and overlap are based on the information-theoretic as well as geometric considerations. They have the capacity to naturally up-weight or down-weight the rare and abundant population species counts, by applying the Good-Turing sample-coverage correction. Additionally, the functional versions of the indices are implemented in the form of the so called diversity profiles. The package also implements the indices inversion known as the effective number of species (ENS).
 
-To install divo package first type \texttt{install.packages("divo")} and load it into an R session by typing \texttt{library(divo)}. To get help type \texttt{?divo}.
+To install divo package type (without hash sign): 
+
+<<>>=
+#source("https://bioconductor.org/biocLite.R")
+#biocLite("divo")
+@
+
+To load it into an R session type \texttt{library(divo)}. 
+
+To get help type {\texttt{?divo}.
 
 Below is a short example of how to use the package. The full divo User's Guide is available as part of the online documentation. 
 
-To calculate similarity index of diversity profile, first load data as data frame of populations (columns) and species (rows) first and then select a test. For example to resample input data set 50 times and run I-index:
+To calculate similarity index of diversity profile, first load data as data frame of populations (columns) and species (rows) first and then select a test. For example to resample input data set 100 times and run I-index:
 
 <<>>=
 library(divo)
 data(TCR.Data)
-result <- i.inp(x, resample = 25)
+result <- i.inp(x, resample = 100)
 @
 To calculate Diversity Profile or Efective Number of Species use:  
 
 <<>>=
 data(TCR.Data)
-DP <- dp(x, resample = 25)
-ENS <- ens(x, resample = 25)
+DP <- dp(x, resample = 100)
+ENS <- ens(x, resample = 100)
 @
 
 For more information see divo help and package manual. 
