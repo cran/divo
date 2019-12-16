@@ -6,7 +6,7 @@
 \arguments{
 \item{x}{a vector containing input population} 
 }
-\author{Christoph Sadee, Maciej Pietrzak, Michal Seweryn, Grzegorz Rempala\cr
+\author{Christoph Sadee, Maciej Pietrzak, Michal Seweryn, Cankun Wang, Grzegorz Rempala\cr
 Maintainer: Maciej Pietrzak \email{pietrzak.20@osu.edu}}
 \references{
 Good I.J. The population frequencies of species and the estimation of population parameters. (1953) Biometrika 40:237-64\cr

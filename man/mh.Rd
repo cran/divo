@@ -15,7 +15,7 @@ PlugIn = FALSE, size = 1, saveBootstrap = FALSE)}
 \item{size}{resampled fraction of the population, default = 1 (actual size of populations). The value should not be smaller than 10\% of population (size = 0.1)}
 \item{saveBootstrap}{Saves bootstrap result to a file. Use saveBootstrap = TRUE to save bootstrap results to a Bootstrap folder in current directory; saveBootstrap = 'FolderName' - saves bootstrap results to user-named folder}
 }
-\author{Christoph Sadee, Maciej Pietrzak, Michal Seweryn, Grzegorz Rempala\cr
+\author{Christoph Sadee, Maciej Pietrzak, Michal Seweryn, Cankun Wang, Grzegorz Rempala\cr
 Maintainer: Maciej Pietrzak \email{pietrzak.20@osu.edu}}
 \references{Magurran A.E. (2005) Biological diversity. Curr Biol 15:R116-8
 

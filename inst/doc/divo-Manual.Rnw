@@ -8,7 +8,7 @@
 % \usepackage{graphicx} % @USE GRAPHICX@
 
 \begin{document}
-\SweaveOpts{concordance=TRUE}
+%\SweaveOpts{concordance=TRUE}
 \pagenumbering{gobble}
 
 \begin{titlepage}
@@ -18,7 +18,7 @@
 \textbf{\Huge\ divo}
 \par\large\bold{Diversity and Overlap Analysis Package}
 \par\large\bold{User's Guide}
-\par\bigskip\large Christoph Sadee, Maciej Pietrzak, Michal Seweryn
+\par\bigskip\large Christoph Sadee, Maciej Pietrzak, Michal Seweryn, Cankun Wang
 \par\large and Grzegorz Rempala
 \par{\large\bigskip \today}
 
@@ -41,9 +41,9 @@
 \begin{description}
 \raggedright{}
 
-\item[Version]\AsIs{0.2}
+\item[Version]\AsIs{1.0.1}
 \item[Type]\AsIs{Package}
-\item[Authors]\AsIs{Christoph Sadee, Maciej Pietrzak, Michal Seweryn, Grzegorz Rempala}
+\item[Authors]\AsIs{Christoph Sadee, Maciej Pietrzak, Michal Seweryn, Cankun Wang, Grzegorz Rempala}
 \item[Maintainer]\AsIs{Maciej Pietrzak }\email{pietrzak.20@osu.edu}\AsIs{}
 \item[Depends]\AsIs{R (>= 3.3.0), cluster}
 \item[Description]\AsIs{Package implements empirical analysis of diversity and similarity (overlap) in biological or ecological systems.}

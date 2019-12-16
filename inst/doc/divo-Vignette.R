@@ -3,8 +3,8 @@
 ###################################################
 ### code chunk number 1: divo-Vignette.Rnw:22-24
 ###################################################
-#source("https://bioconductor.org/biocLite.R")
-#biocLite("divo")
+
+#install.packages("divo")
 
 
 ###################################################
