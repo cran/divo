@@ -12,7 +12,7 @@
 \date{December 12 2019\\
 Revised December 12 2019}
 \begin{document}
-%\SweaveOpts{concordance=TRUE}
+\SweaveOpts{concordance=TRUE}
 \maketitle
 
 divo package implements empirical analysis of diversity and similarity (overlap) in biological or ecological systems. The implemented indices of diversity and overlap are based on the information-theoretic as well as geometric considerations. They have the capacity to naturally up-weight or down-weight the rare and abundant population species counts, by applying the Good-Turing sample-coverage correction. Additionally, the functional versions of the indices are implemented in the form of the so called diversity profiles. The package also implements the indices inversion known as the effective number of species (ENS).
@@ -26,7 +26,7 @@ To install divo package type (without hash sign):
 
 To load it into an R session type \texttt{library(divo)}. 
 
-To get help type {\texttt{?divo}.
+To get help type \texttt{?divo}.
 
 Below is a short example of how to use the package. The full divo User's Guide is available as part of the online documentation. 
 

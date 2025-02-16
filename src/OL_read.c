@@ -766,6 +766,7 @@ int OL_read(SEXP X, SEXP Test, SEXP Alpha, SEXP Resample, SEXP CI,
 	free(ptrResults);
 	free(ptrResCvg);
 	free(ptrAfa);
+    
 	
 	return(nprot);	
 }

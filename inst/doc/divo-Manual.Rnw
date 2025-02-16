@@ -5,9 +5,10 @@
 \usepackage{makeidx}
 
 \usepackage[utf8,latin1]{inputenc}
-% \usepackage{graphicx} % @USE GRAPHICX@
+\usepackage{graphicx} % @USE GRAPHICX@
 
 \begin{document}
+\SweaveOpts{concordance=TRUE}
 %\SweaveOpts{concordance=TRUE}
 \pagenumbering{gobble}
 
